@@ -1,0 +1,51 @@
+Ruby API: http://www.ruby-doc.org/
+Book Programming Ruby: The Pragmatic Programmer's Guide: http://ruby-doc.org/docs/ProgrammingRuby/
+Method that substitutes part of a string: str[Fixnum, Fixnum] = new_str
+Information about Regexp: http://www.ruby-doc.org/core-1.9.3/Regexp.html
+Information about Range: http://www.ruby-doc.org/core-1.9.3/Range.html
+  >> Range.new(0, 2)
+  => (0..2)
+  >> Range.new(0, 2, exclusive=true)
+  => (0...2)
+  >> Range.new(0, 2) == (0..2)
+  => true
+  >> (0..2).eql? (0..2)
+  => true
+  >> (0..2) == (0...3)  # can't understand why
+  => false
+  >> (0..2) === (0..2)  # the behaviour of range's === is to verify if the operand is an element of range
+  => false
+  >> (0..2).exclude_end?
+  => false
+  >> (0...2).exclude_end?
+  => true
+  >> (0..2).begin
+  => 0
+  >> (0..2).first
+  => 0
+  >> (0..2).first 2  # strange behaviour since the same method return two different types of data
+  => [0, 1]
+  >> (0..2).end
+  => 2
+  >> (0..2).last
+  => 2
+  >> (0..2).last 2 # not sure if the expected behaviour was to return the items in reverse order
+  => [1, 2]
+  >> (0..2).cover? 0
+  => true
+  >> (0..2).include? 0
+  => true
+  >> ("a".."z").cover? "c"  # not sure how char ranges work but I think it uses ASCII
+  => true
+  >> (0..2).hash # looks like this method is used by the == operator
+  => -819007741502515591
+
+  Range is used in many places, one of them is case to simulate a C's switch:
+  >> case 79
+  ?>   when 1..50 then print "low\n"
+  ?>   when 51..75 then print "medium\n"
+  ?>   when 76..100 then print "high\n"
+  ?> end
+  => high
+
+  Range.each block is a way to make a for
